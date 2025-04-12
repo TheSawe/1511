@@ -4,10 +4,12 @@ import android.os.Handler
 import android.os.Looper
 import okhttp3.*
 import okhttp3.Headers.Companion.toHeaders
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import org.json.JSONObject
 import java.io.IOException
 import java.net.CookieManager
 import java.net.CookiePolicy
+import java.net.URI
 
 object ApiClient {
     private const val LOGIN_URL = "https://www.1511.ru/accounts/login"
@@ -119,5 +121,11 @@ object ApiClient {
                 }
             }
         })
+    }
+
+    fun getCookies(): Map<String, String> {
+        val url = "https://www.1511.ru".toHttpUrl()
+        val cookies = client.cookieJar.loadForRequest(url)
+        return cookies.associate { it.name to it.value }
     }
 }

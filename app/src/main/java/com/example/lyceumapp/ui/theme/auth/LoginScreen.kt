@@ -83,7 +83,9 @@ fun LoginScreen(navController: NavController) {
                 password = password,
                 onSuccess = {
                     isLoading = false
-                    navController.navigate("main")
+                    navController.navigate("main") {
+                        popUpTo("login") { inclusive = true }
+                    }
                 },
                 onError = { error ->
                     isLoading = false
@@ -149,8 +151,8 @@ fun LoginScreen(navController: NavController) {
                 unfocusedContainerColor = Color.Transparent,
                 disabledContainerColor = Color.Transparent,
                 cursorColor = MaterialTheme.colorScheme.onSurface,
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Black,
+                focusedTextColor = com.example.lyceumapp.ui.theme.TextFieldTextDark,
+                unfocusedTextColor = com.example.lyceumapp.ui.theme.TextFieldDisabledTextDark,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.onSurface
             ),
             modifier = Modifier
@@ -190,8 +192,8 @@ fun LoginScreen(navController: NavController) {
                 unfocusedContainerColor = Color.Transparent,
                 disabledContainerColor = Color.Transparent,
                 cursorColor = MaterialTheme.colorScheme.onSurface,
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Black,
+                focusedTextColor = com.example.lyceumapp.ui.theme.TextFieldTextDark,
+                unfocusedTextColor = com.example.lyceumapp.ui.theme.TextFieldDisabledTextDark,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.onSurface
             ),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),

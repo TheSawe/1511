@@ -34,6 +34,10 @@ class MainActivity : ComponentActivity() {
                         composable("main") {
                             MainScreen(navController)
                         }
+                        composable("news_detail/{newsId}") { backStackEntry ->
+                            val newsId = backStackEntry.arguments?.getString("newsId")?.toIntOrNull()
+//                            NewsDetailScreen(newsId = newsId)
+                        }
                     }
                 }
             }
